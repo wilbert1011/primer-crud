@@ -4,10 +4,7 @@
 
 @section('contenido')
 <div class="row">
-    <h1>hdm</h1>
-    
-
-    
+    <h1>rama hdm</h1>
 
 </div>
 @endsection
