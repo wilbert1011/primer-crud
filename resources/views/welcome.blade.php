@@ -8,9 +8,18 @@
       Crud con laravel 8 y MySql
     </div>
     <div class="card-body">
+      <div class="rov">
+        <div class="col-sm-12">
+          @if ($mensaje = Session::get('success'))
+          <div class="alert alert-primary" role="alert">
+            {{ $mensaje }}
+          </div>
+          @endif
+        </div>
+      </div>
       <h5 class="card-title">Listado de personas en el sistema</h5>
       <p>
-        <a href="{{route("personas.create")}}" class="btn btn-primary">Agregar persona</a>
+        <a href="{{route("personas.create")}}" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Agregar persona</a>
       </p>
       @php
           //print_r($datos);
@@ -33,13 +42,27 @@
                         <td>{{ $item->paterno }}</td>
                         <td>{{ $item->materno }}</td>
                         <td>{{ $item->fecha_nacimiento }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                          <form action="{{ route("personas.edit", $item->id) }}" method="get">
+                            <button class="btn btn-warning btn-sm">
+                              <i class="fa-solid fa-user-pen"></i>
+                            </button>
+                          </form>
+                        </td>
+                        <td>
+                          <form action="{{ route("personas.show", $item->id) }}" method="get">
+                            <button class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-user-xmark"></i>
+                            </button>
+                          </form>
+                        </td>
                     </tr>
                     @endforeach
                     
                 </tbody>
             </table>
+            <hr>
+
         </div>
       </p>
     </div>
